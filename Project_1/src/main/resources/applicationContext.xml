@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans  xmlns="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:context="http://www.springframework.org/schema/context"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+   		http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <bean id="testBean"
-          class="com.java.internship.TestBean">
-        <constructor-arg value="NGINX"/>
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+
+    <bean id="rockMusicBean"
+          class="com.java.internship.RockMusic">
+    </bean>
+
+    <bean id="rapMusicBean"
+          class="com.java.internship.RapMusic">
+    </bean>
+
+    <bean id="classicMusicBean"
+          class="com.java.internship.ClassicalMusic">
+    </bean>
+
+    <!--<util:list id="musicList" list-class="java.util.List" value-type="com.java.internship.Music">
+        <value>rockMusicBean</value>
+        <value>rapMusicBean</value>
+        <value>classicMusicBean</value>
+    </util:list>-->
+
+    <bean id="musicPlayer"
+          class="com.java.internship.MusicPlayer">
+        <property name="music" ref="musicBean"/>
+
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
 
 </beans>
