@@ -4,22 +4,29 @@ import java.util.List;
 
 public class MusicPlayer {
     private List<Music> musicList;
+    private Music music;
 
     private String name;
     private int volume;
 
-    public MusicPlayer() {
-        //
-    }
+    public MusicPlayer() {}
 
     // IoC
     public MusicPlayer(List<Music> musicList) {
         this.musicList = musicList;
     }
 
+    public MusicPlayer(Music music) {
+        this.music = music;
+    }
+
     public void playMusicList() {
         for (Music music : this.musicList)
             System.out.println("Playing: " + music.getSong());
+    }
+
+    public void playMusic() {
+        System.out.println("Playing: " + this.music.getSong());
     }
 
     public void add(Music music) {
@@ -32,6 +39,14 @@ public class MusicPlayer {
 
     public void setMusicList(List<Music> musicList) {
         this.musicList = musicList;
+    }
+
+    public Music getMusic() {
+        return music;
+    }
+
+    public void setMusic(Music music) {
+        this.music = music;
     }
 
     public String getName() {

@@ -10,7 +10,7 @@
                     http://www.springframework.org/schema/context
                     http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+    <!--<context:property-placeholder location="classpath:musicPlayer.properties"/>
 
     <bean id="rockMusicBean"
           class="com.java.internship.RockMusic">
@@ -21,7 +21,10 @@
     </bean>
 
     <bean id="classicMusicBean"
-          class="com.java.internship.ClassicalMusic">
+          class="com.java.internship.ClassicalMusic"
+          init-method="Init"
+          destroy-method="Destroy"
+          factory-method="getClassicalMusic">
     </bean>
 
     <util:list id="musicList" value-type="com.java.internship.Music">
@@ -36,6 +39,8 @@
 
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
+    </bean>-->
+    
+    <context:component-scan base-package="com.java.internship"/>
 
 </beans>
