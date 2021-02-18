@@ -1,7 +1,12 @@
 package com.java.internship;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
+@Component
 public class MusicPlayer {
     private List<Music> musicList;
     private Music music;
@@ -16,7 +21,8 @@ public class MusicPlayer {
         this.musicList = musicList;
     }
 
-    public MusicPlayer(Music music) {
+    @Autowired
+    public MusicPlayer(@Qualifier("someRockMusic") Music music) {
         this.music = music;
     }
 
