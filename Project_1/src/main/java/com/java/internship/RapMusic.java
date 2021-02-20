@@ -1,19 +1,26 @@
 package com.java.internship;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class RapMusic implements Music {
     private final List<String> songList;
     private int size;
 
     public RapMusic() {
         this.songList = new ArrayList<>();
-        this.songList.add("Eminem - Rap God");
-        this.songList.add("The Game - Hate It Or Love It");
-        this.songList.add("50 CENT - P.I.M.P.");
 
-        this.size = 3;
+        addMusic("Eminem - Rap God");
+        addMusic("The Game - Hate It Or Love It");
+        addMusic("50 CENT - P.I.M.P.");
+    }
+
+    public void addMusic(String song) {
+        this.songList.add(song);
+        size++;
     }
 
     @Override

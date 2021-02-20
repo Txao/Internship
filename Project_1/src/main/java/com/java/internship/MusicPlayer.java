@@ -6,24 +6,24 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class MusicPlayer {
-    private List<Music> musicList;
+    private Music music;
 
     // IoC
-    public MusicPlayer(List<Music> musicList) {
-        this.musicList = musicList;
+    public MusicPlayer(Music music) {
+        this.music = music;
     }
 
     public void playMusic() {
-        Music temp = this.musicList.get((int)(Math.random() * musicList.size()));
-        System.out.println(temp.getSongByIndex((int)(Math.random() * temp.getSize())));
+        System.out.println(this.music.getSongByIndex((int)(Math.random() * music.getSize())));
     }
 
-    public List<Music> getMusicList() {
-        return musicList;
+    public Music getMusic() {
+        return this.music;
     }
 
-    public void setMusicList(List<Music> musicList) {
-        this.musicList = musicList;
+    public void setMusic(Music music) {
+        this.music = music;
     }
 }
