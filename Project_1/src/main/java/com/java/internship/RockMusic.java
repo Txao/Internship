@@ -5,16 +5,22 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
 public class RockMusic implements Music {
     private final List<String> songList;
-    private final Genres genre = Genres.ROCK;
+    private int size;
 
     public RockMusic() {
         this.songList = new ArrayList<>();
-        songList.add("AC/DC - Big Gun");
-        songList.add("Metallica - Nothing Else Matters");
-        songList.add("Led Zeppelin - Stairway to Heaven");
+        this.songList.add("AC/DC - Big Gun");
+        this.songList.add("Metallica - Nothing Else Matters");
+        this.songList.add("Led Zeppelin - Stairway to Heaven");
+
+        this.size = 3;
+    }
+
+    @Override
+    public int getSize() {
+        return this.size;
     }
 
     @Override
@@ -30,10 +36,5 @@ public class RockMusic implements Music {
             songs += (song + "\n");
 
         return songs;
-    }
-
-    @Override
-    public Genres getGenres() {
-        return this.genre;
     }
 }

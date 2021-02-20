@@ -4,43 +4,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component
+import java.util.List;
+
 public class MusicPlayer {
-    private Music rockMusic;
-    private Music classicalMusic;
+    private List<Music> musicList;
 
     // IoC
-    @Autowired
-    public MusicPlayer(@Qualifier("rockMusic") Music rock, @Qualifier("classicalMusic") Music classic) {
-        this.rockMusic = rock;
-        this.classicalMusic = classic;
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
     }
 
-    public void playMusic(Genres genre) {
-        switch (genre) {
-            case ROCK:
-                System.out.println(this.rockMusic.getSongByIndex((int)(Math.random() * 3)));
-                break;
-
-            case CLASSICAL:
-                System.out.println(this.classicalMusic.getSongByIndex((int)(Math.random() * 3)));
-                break;
-        }
+    public void playMusic() {
+        Music temp = this.musicList.get((int)(Math.random() * musicList.size()));
+        System.out.println(temp.getSongByIndex((int)(Math.random() * temp.getSize())));
     }
 
-    public Music getRockMusic() {
-        return rockMusic;
+    public List<Music> getMusicList() {
+        return musicList;
     }
 
-    public void setRockMusic(Music rockMusic) {
-        this.rockMusic = rockMusic;
-    }
-
-    public Music getClassicalMusic() {
-        return classicalMusic;
-    }
-
-    public void setClassicalMusic(Music classicalMusic) {
-        this.classicalMusic = classicalMusic;
+    public void setMusicList(List<Music> musicList) {
+        this.musicList = musicList;
     }
 }
