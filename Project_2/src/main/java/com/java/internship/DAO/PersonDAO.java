@@ -31,4 +31,13 @@ public class PersonDAO {
         person.setId(++PEOPLE_COUNT);
         people.add(person);
     }
+
+    public void edit(int id, Person person) {
+        Person tempPerson = getPersonById(id);
+        tempPerson.setName(person.getName());
+    }
+
+    public void delete(int id) {
+        people.removeIf(p -> p.getId() == id);
+    }
 }
