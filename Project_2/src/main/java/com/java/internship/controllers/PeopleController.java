@@ -53,6 +53,7 @@ public class PeopleController {
         return "redirect:/people";
     }
 
+    // PATCH -> GET
     @PatchMapping("/{id}/delete")
     public String delete(@PathVariable("id") int id, Model model) {
         model.addAttribute("person", personDAO.getPersonById(id));
